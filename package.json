@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "node clean.js"
+    "clean": "node scripts/clean.js"
   },
   "keywords": [],
   "author": "",
