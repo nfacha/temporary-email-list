@@ -5,6 +5,7 @@ const p = require('path');
 const psl = require('psl');
 
 const path = p.resolve(__dirname, '../list.txt');
+const pathJson = p.resolve(__dirname, '../list.json');
 const rawList = [...new Set(fs.readFileSync(path)
     .toString()
     .trim()
@@ -14,3 +15,4 @@ const rawList = [...new Set(fs.readFileSync(path)
 const cleanedList = rawList.filter((domain) => psl.parse(domain).listed);
 
 fs.writeFileSync(path, cleanedList.join("\n"))
+fs.writeFileSync(pathJson, JSON.stringify(cleanedList))
