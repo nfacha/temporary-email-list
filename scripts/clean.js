@@ -6,6 +6,7 @@ const psl = require('psl');
 
 const path = p.resolve(__dirname, '../list.txt');
 const pathJson = p.resolve(__dirname, '../list.json');
+const pathCount= p.resolve(__dirname, '../totalDomains.txt');
 const rawList = [...new Set(fs.readFileSync(path)
     .toString()
     .trim()
@@ -16,3 +17,4 @@ const cleanedList = rawList.filter((domain) => psl.parse(domain).listed);
 
 fs.writeFileSync(path, cleanedList.join("\n"))
 fs.writeFileSync(pathJson, JSON.stringify(cleanedList))
+fs.writeFileSync( pathCount, cleanedList.length.toString())
