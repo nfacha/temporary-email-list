@@ -1,0 +1,15 @@
+{
+  "name": "temporary-email-list",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "clean": "node clean.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "psl": "^1.9.0"
+  }
+}
