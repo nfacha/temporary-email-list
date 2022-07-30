@@ -6,37 +6,6 @@ const psl = require('psl');
 const dns = require('dns');
 const _ = require('lodash');
 
-function checkMxRecords(list) {
-
-    return new Promise(async function (resolve, reject) {
-        let activeList = [];
-        let inactiveList = [];
-        let c = 0;
-        let cc = 0;
-        const chunks = _.chunk(list, 300);
-        console.log(`Total chunks: ${chunks.length}`);
-        for(let chunk of chunks){
-            cc++;
-            console.log(`Chunk ${cc} of ${chunks.length}`);
-            for (let domain of chunk) {
-                console.log(`Checking MX records for ${domain}`);
-                dns.resolveMx(domain, (err, addresses) => {
-                    c++;
-                    if (err && err.code === 'ENOTFOUND') {
-                        inactiveList.push(domain);
-                    } else {
-                        activeList.push(domain);
-                    }
-                    if (c === list.length - 1) {
-                        resolve({active: activeList.sort(), inactive: inactiveList.sort()});
-                    }
-                });
-
-            }
-        }
-    });
-}
-
 const path = p.resolve(__dirname, '../list.txt');
 const pathJson = p.resolve(__dirname, '../list.json');
 const pathInactive = p.resolve(__dirname, '../list-inactive.txt');
@@ -66,3 +35,30 @@ checkMxRecords(cleanedList).then(function (result) {
     fs.writeFileSync(pathTotalInactive, result.inactive.length.toString())
 });
 
+function querySingleDns(domain){
+    return new Promise(async function (resolve, reject) {
+        dns.resolveMx(domain, (err, addresses) => {
+            if(err){
+                resolve(false);
+            }else{
+                resolve(true);
+            }
+        });
+    });
+}
+
+
+async function checkMxRecords(list) {
+    let validDomains = [];
+    let invalidDomains = [];
+    for (const domain of list) {
+        if (await querySingleDns(domain)) {
+            validDomains.push(domain);
+            console.log(`${domain} is valid`);
+        }else{
+            invalidDomains.push(domain);
+            console.log(`${domain} is invalid`);
+        }
+    }
+    return {active: validDomains, inactive: invalidDomains};
+}
