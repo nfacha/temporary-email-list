@@ -4,7 +4,8 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "clean": "node scripts/clean.js"
+    "clean-and-check": "node scripts/clean-and-check.js",
+    "clean- "node scripts/clean.js"
   },
   "keywords": [],
   "author": "",
