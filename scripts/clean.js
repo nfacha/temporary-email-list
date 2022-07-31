@@ -8,7 +8,6 @@ const _ = require('lodash');
 
 const path = p.resolve(__dirname, '../list.txt');
 const pathJson = p.resolve(__dirname, '../list.json');
-const pathInactive = p.resolve(__dirname, '../list-inactive.txt');
 const pathTotalActive = p.resolve(__dirname, '../total-active.txt');
 const rawList = [...new Set(fs.readFileSync(path)
     .toString()
@@ -22,5 +21,4 @@ console.log(`Got ${cleanedList.length} unique domains`);
 fs.writeFileSync(path, cleanedList.join("\n"))
 fs.writeFileSync(pathJson, JSON.stringify(cleanedList))
 
-fs.writeFileSync(pathInactive, cleanedList.join("\n"))
 fs.writeFileSync(pathTotalActive, cleanedList.length.toString())
