@@ -8,17 +8,33 @@ const _ = require('lodash');
 
 const path = p.resolve(__dirname, '../list.txt');
 const pathJson = p.resolve(__dirname, '../list.json');
+const pathInactive = p.resolve(__dirname, '../list-inactive.txt');
+const pathInactiveJson = p.resolve(__dirname, '../list-inactive.json');
 const pathTotalActive = p.resolve(__dirname, '../total-active.txt');
+const pathTotalInactive = p.resolve(__dirname, '../total-inactive.txt');
+
 const rawList = [...new Set(fs.readFileSync(path)
     .toString()
     .trim()
     .split("\n"))]
     .sort();
-
+const rawInactiveList = [...new Set(fs.readFileSync(pathInactive)
+    .toString()
+    .trim()
+    .split("\n"))]
+    .sort();
 const cleanedList = rawList.filter((domain) => psl.parse(domain).listed);
+const cleanedInactiveList = rawInactiveList.filter((domain) => psl.parse(domain).listed);
 console.log(`Got ${cleanedList.length} unique domains`);
+console.log(`Got ${cleanedInactiveList.length} inactive unique domains`);
 
 fs.writeFileSync(path, cleanedList.join("\n"))
 fs.writeFileSync(pathJson, JSON.stringify(cleanedList))
 
 fs.writeFileSync(pathTotalActive, cleanedList.length.toString())
+
+
+fs.writeFileSync(pathInactive, cleanedInactiveList.join("\n"))
+fs.writeFileSync(pathInactiveJson, JSON.stringify(cleanedInactiveList))
+
+fs.writeFileSync(pathTotalInactive, cleanedInactiveList.length.toString())
