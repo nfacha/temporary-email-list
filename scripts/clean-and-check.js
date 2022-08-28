@@ -17,8 +17,13 @@ const rawList = [...new Set(fs.readFileSync(path)
     .trim()
     .split("\n"))]
     .sort();
-
+const rawInactiveList = [...new Set(fs.readFileSync(pathInactive)
+    .toString()
+    .trim()
+    .split("\n"))]
+    .sort();
 const cleanedList = rawList.filter((domain) => psl.parse(domain).listed);
+
 console.log(`Got ${cleanedList.length} unique domains`);
 console.log(`Checking MX records for ${cleanedList.length} domains`);
 checkMxRecords(cleanedList).then(function (result) {
@@ -50,15 +55,17 @@ function querySingleDns(domain){
 
 async function checkMxRecords(list) {
     let validDomains = [];
-    let invalidDomains = [];
+    let invalidDomains = rawInactiveList;
+    console.log(invalidDomains.length);
     for (const domain of list) {
         if (await querySingleDns(domain)) {
             validDomains.push(domain);
             console.log(`${domain} is valid`);
-        }else{
+        } else {
             invalidDomains.push(domain);
             console.log(`${domain} is invalid`);
         }
     }
-    return {active: validDomains, inactive: invalidDomains};
+    let filteredInvalidDomains = [...new Set(invalidDomains)].sort();
+    return {active: validDomains, inactive: filteredInvalidDomains};
 }
