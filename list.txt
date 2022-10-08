@@ -70,7 +70,6 @@
 0800br.ml
 0800brasil.ml
 0815.ru
-0815.ry
 0815.su
 0845.ru
 0854445.com
@@ -4459,7 +4458,6 @@ cbsglobal.net
 cbv.com
 cbyourself.com
 cc-cc.usa.cc
-cc.liamria
 cc.mailboxxx.net
 cccod.com
 cccold.com
@@ -14331,7 +14329,6 @@ moza.pl
 mozara.com
 mozej.com
 mozgu.com
-mozmail.com
 mozzzi12.com
 mp-j.igg.biz
 mp.igg.biz
