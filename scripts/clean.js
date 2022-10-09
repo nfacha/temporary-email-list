@@ -12,6 +12,7 @@ const pathInactive = p.resolve(__dirname, '../list-inactive.txt');
 const pathInactiveJson = p.resolve(__dirname, '../list-inactive.json');
 const pathTotalActive = p.resolve(__dirname, '../total-active.txt');
 const pathTotalInactive = p.resolve(__dirname, '../total-inactive.txt');
+const blacklist = p.resolve(__dirname, '../blacklist.txt');
 
 const rawList = [...new Set(fs.readFileSync(path)
     .toString()
@@ -23,7 +24,11 @@ const rawInactiveList = [...new Set(fs.readFileSync(pathInactive)
     .trim()
     .split("\n"))]
     .sort();
-const cleanedList = rawList.filter((domain) => psl.parse(domain).listed);
+const rawBlackList = [...new Set(fs.readFileSync(blacklist)
+    .toString()
+    .trim()
+    .split("\n"))];
+const cleanedList = rawList.filter((domain) => psl.parse(domain).listed).filter((domain) => !rawBlackList.includes(domain));
 const cleanedInactiveList = rawInactiveList.filter((domain) => psl.parse(domain).listed);
 console.log(`Got ${cleanedList.length} unique domains`);
 console.log(`Got ${cleanedInactiveList.length} inactive unique domains`);
