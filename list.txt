@@ -1352,7 +1352,6 @@
 899079.com
 89db.com
 89gmail.com
-8alias.com
 8email.com
 8estcommunity.org
 8i7.net
@@ -1360,7 +1359,6 @@
 8mail.com
 8mail.ga
 8mailpro.com
-8shield.net
 900k.es
 902gmail.com
 905gmail.com
@@ -2019,7 +2017,6 @@ aldineisd.com
 aldivy.emailind.com
 alectronik.com
 aledrioroots.youdontcare.com
-aleeas.com
 aleen.emailind.com
 alegrabrasil.com
 alegradijital.com
@@ -6419,7 +6416,6 @@ dragonhospital.net
 dragons-mail.com
 dragonzmart.com
 drakorfor.me
-dralias.com
 drar.de
 draviero.info
 draviero.pw
@@ -6516,7 +6512,6 @@ dts.com.br
 duanehar.pw
 dubilowski.com
 duck.9amail.top
-duck.com
 duck2.club
 ducruet.it
 dudi.com
@@ -7426,7 +7421,6 @@ exactmail.com
 exaltedgames.com
 examole.com
 exampe.com
-example.com
 exbte.com
 exbts.com
 excel-medical.com
@@ -18876,8 +18870,6 @@ simplebox.email
 simplebrackets.com
 simpleemail.in
 simpleemail.info
-simplelogin.co
-simplelogin.fr
 simplemail.in
 simplemail.top
 simplemailserver.bid
@@ -19019,7 +19011,6 @@ slissi.site
 slivmag.ru
 slix.dev
 slkdjf.com
-slmail.me
 slomke.com
 slopsbox.com
 slot-onlinex.com
