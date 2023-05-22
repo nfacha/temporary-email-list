@@ -9,3 +9,4 @@ simplelogin.co
 simplelogin.fr
 slmail.me
 gmail.com
+zoho.com
