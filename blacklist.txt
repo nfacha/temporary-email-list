@@ -10,3 +10,4 @@ simplelogin.fr
 slmail.me
 gmail.com
 zoho.com
+outlook.com
