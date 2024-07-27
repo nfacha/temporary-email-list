@@ -11,3 +11,6 @@ slmail.me
 gmail.com
 zoho.com
 outlook.com
+my.id
+gmx.co
+uk2.net
