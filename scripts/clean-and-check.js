@@ -16,16 +16,19 @@ const blacklist = p.resolve(__dirname, '../blacklist.txt');
 
 const rawList = [...new Set(fs.readFileSync(path)
     .toString()
+    .replace(/\r\n/g, '\n') // Normalize Windows line endings to Unix
     .trim()
     .split("\n"))]
     .sort();
 const rawInactiveList = [...new Set(fs.readFileSync(pathInactive)
     .toString()
+    .replace(/\r\n/g, '\n') // Normalize Windows line endings to Unix
     .trim()
     .split("\n"))]
     .sort();
 const rawBlackList = [...new Set(fs.readFileSync(blacklist)
     .toString()
+    .replace(/\r\n/g, '\n') // Normalize Windows line endings to Unix
     .trim()
     .split("\n"))];
 const cleanedList = rawList.filter((domain) => psl.parse(domain).listed).filter((domain) => !rawBlackList.includes(domain));
