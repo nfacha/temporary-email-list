@@ -5,7 +5,8 @@
   "main": "index.js",
   "scripts": {
     "clean-and-check": "node scripts/clean-and-check.js",
-    "clean": "node scripts/clean.js"
+    "clean": "node scripts/clean.js",
+    "clean-blacklist": "node scripts/clean-blacklist.js"
   },
   "keywords": [],
   "author": "",
