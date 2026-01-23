@@ -432,3 +432,4 @@ yepmail.net
 ymail.com
 your-mail.com
 zoho.com
+wizard.com
